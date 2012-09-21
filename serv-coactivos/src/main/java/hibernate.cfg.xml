@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">admin</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/aesoluci_coactivos</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <mapping class="com.alfa.consulting.persistencia.entidades.Cliente" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.Cobranza" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.CobranzaDeuda" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.Complemento" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.ComplementoRelacion" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.ComplementoTipo" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.Deuda" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.Estado" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.EstadoTipo" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.Grupo" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.Pais" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.PaisDep" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.PaisDepProv" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.PaisDepProvDst" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.Plantilla" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.Prueba" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.Usuario" />
+        <mapping class="com.alfa.consulting.persistencia.entidades.UsuarioSesion" />
+    </session-factory>
+</hibernate-configuration>

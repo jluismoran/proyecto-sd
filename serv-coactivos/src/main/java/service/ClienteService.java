@@ -14,7 +14,7 @@ public interface ClienteService {
 	    @GET
 	    @Path("/clientes")
 	    @Produces({"application/xml", "application/json"})
-	    public UsuarioCollection getClientes();
+	    public ClienteCollection getClientes();
 	    
 
 	}

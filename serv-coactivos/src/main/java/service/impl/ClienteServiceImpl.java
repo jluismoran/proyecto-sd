@@ -13,7 +13,6 @@ import javax.ws.rs.core.UriInfo;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.alfa.consulting.persistencia.entidades.Cliente;
-import com.alfa.consulting.persistencia.entidades.Usuario;
 
 import service.ClienteService;
 import vo.ClienteCollection;
@@ -33,69 +32,44 @@ public class ClienteServiceImpl implements ClienteService {
     public ClienteServiceImpl() {}
 
     @Override
-    public UsuarioCollection getClientes() {
-    	List<Object[]> listCli = null;
+    public ClienteCollection getClientes() {
+    	List<Cliente> listCli = null;
 		try {
 			listCli = obtenerClientes();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-    	List<model.Usuario> list = new ArrayList<model.Usuario>();
+    	List<model.Cliente> list = new ArrayList<model.Cliente>();
     	
     	if(listCli != null){
-    		for(Object[] obj : listCli){
-    			Usuario micliente = (Usuario)obj[0];
-    			model.Usuario cli = new model.Usuario(micliente.getCodigoUsuario(),
-    								micliente.getPrimerNombre(),
-    								micliente.getSegundoNombre(),
-    								micliente.getApellidoPaterno(),
-    								micliente.getApellidoMaterno(),
-    								micliente.getTipoDocumento(),
-    								micliente.getNroDocumento(),
-    								micliente.getFechaNacimiento(),
-    								micliente.getSexo(),
-    								micliente.getTelefono(),
-    								micliente.getMovil(),
-    								micliente.getDireccion(),
-    								micliente.getTipoUsuario(),
-    								micliente.getEstado(),
-    								micliente.getUsuarioCreacion(),
-    								micliente.getFechaCreacion(),
-    								micliente.getTerminalCreacion(),
-    								micliente.getUsuarioModificacion(),
-    								micliente.getFechaModificacion(),
-    								micliente.getTerminalModificacion(),
-    								micliente.getNombreUsuario(),
-    								micliente.getIdEmpleado(),
-    								micliente.getHabilitarSesion(),
-    								micliente.getSolicitudServicio(),
-    								micliente.getOrdenCompra(),
-    								micliente.getNombreCargo(),
-    								micliente.getEmail(),
-    								micliente.getImagen());
+    		for(Cliente obj : listCli){
+    			Cliente micliente = (Cliente)obj;
+    			model.Cliente cli = new model.Cliente(micliente.getId(),
+    												micliente.getIdExterno(),
+							    					micliente.getDescripcion1(),
+							    					micliente.getDescripcion2(),
+							    					micliente.getNroIdentificacion(),
+							    					micliente.getIdDistrito(),
+							    					micliente.getDireccion(),
+							    					micliente.getIdEstadoDeuda(),
+							    					micliente.getComplemento(),
+							    					micliente.getSaldo(),
+							    					micliente.getComplementoIdMoneda(),
+							    					micliente.getFechaSaldo());
     			list.add(cli);
     		}
     	}
     	
-        return new UsuarioCollection(list);
+        return new ClienteCollection(list);
     }
     
-    public List<Object[]> obtenerClientes() throws Exception {
+    public List<Cliente> obtenerClientes() throws Exception {
 
 		StringBuffer consulta = new StringBuffer();
-		consulta.append("Select usu.codigoUsuario, usu.primerNombre, usu.segundoNombre, ");
-		consulta.append("usu.apellidoPaterno, usu.apellidoMaterno, usu.tipoDocumento, ");
-		consulta.append("usu.nroDocumento, usu.fechaNacimiento, usu.sexo, ");
-		consulta.append("usu.telefono, usu.movil, usu.direccion, usu.tipoUsuario, ");
-		consulta.append("usu.estado, usu.usuarioCreacion, usu.fechaCreacion, usu.terminalCreacion, ");
-		consulta.append("usu.usuarioModificacion, usu.fechaModificacion, usu.terminalModificacion, usu.nombreUsuario, ");
-		consulta.append("usu.idEmpleado, usu.habilitarSesion, usu.solicitudServicio, ");
-		consulta.append("usu.ordenCompra, usu.nombreCargo, usu.email, ");
-		consulta.append("usu.imagen ");
-		consulta.append("from Usuario as usu");
+		consulta.append("Select cli from Cliente as cli");
 		Query query = entityManager.createQuery(consulta.toString());
 		
-		List<Object[]> list = (List<Object[]>) query.getResultList();		
+		List<Cliente> list = (List<Cliente>) query.getResultList();		
 
 		if (list != null)
 			return list;

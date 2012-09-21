@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.alfa.consulting.persistencia.entidades.Organizacion;
-
 @XmlRootElement(name = "usuario")
 public class Usuario {
 
